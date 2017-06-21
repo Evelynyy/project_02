@@ -55,7 +55,8 @@
 		}else{
 			conf = $.extend(conf, arg);
 		}
-
+		
+		/* 设置弹出框样式 */
 		$box = $('<div>' +
 			'<div class="pop-title">' + conf.title + '</div>' +
 			'<div class="pop-content">' +
@@ -89,7 +90,8 @@
 
 		$confirm = $content.find('button.confirm');
 		$cancel = $content.find('button.cancel');
-
+		
+		/* 设置遮罩层样式 */
 		$mask = $('<div></div>').css({
 			background: 'rgba(0, 0, 0, 0.5)',
 			position: 'fixed',
@@ -107,9 +109,9 @@
 			}
 		}, 50);
 
-		$confirm.on('click', on_confirmed);
-		$cancel.on('click',  on_cancel);
-		$mask.on('click', on_cancel);
+		$confirm.on('click', on_confirmed);	// 绑定单击确认按钮事件
+		$cancel.on('click',  on_cancel);	// 绑定单击取消按钮事件
+		$mask.on('click', on_cancel);		// 绑定单击遮罩层触发取消事件
 
 		function on_confirmed() {
 			confirmed = true;
@@ -128,8 +130,8 @@
 		 * 调整弹出框位置
 		 */
 		function adjust_box_position(){
-			var window_width = $window.width(),
-				window_height = $window.height(),
+			var window_width = $window.width(),	// 获取窗体宽度
+				window_height = $window.height(),	// 获取窗体高度
 				box_width = $box.width(),
 				box_height = $box.height(),
 				move_x,
